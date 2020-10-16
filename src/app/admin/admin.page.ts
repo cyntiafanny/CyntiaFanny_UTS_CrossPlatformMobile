@@ -70,7 +70,11 @@ export class AdminPage implements OnInit {
     this.presentLoading().then(() => {
       this.itemService.deleteItem(id)
       this.presentToast();
-      this.ionViewWillEnter();
+      this.items = this.itemService.getAllItems();
+      this.isSelected = [];
+      for (let a = 0; a < this.items.length; a++) {
+        this.isSelected[a] = false;
+      }
     });
   }
 
@@ -137,6 +141,10 @@ export class AdminPage implements OnInit {
     });
     modal.onDidDismiss().then(() => {
       this.items = this.itemService.getAllItems();
+      this.isSelected = [];
+      for (let a = 0; a < this.items.length; a++) {
+        this.isSelected[a] = false;
+      }
     });
     return await modal.present();
   }
@@ -150,6 +158,10 @@ export class AdminPage implements OnInit {
     });
     modal.onDidDismiss().then(() => {
       this.items = this.itemService.getAllItems();
+      this.isSelected = [];
+      for (let a = 0; a < this.items.length; a++) {
+        this.isSelected[a] = false;
+      }
     });
     return await modal.present();
   }

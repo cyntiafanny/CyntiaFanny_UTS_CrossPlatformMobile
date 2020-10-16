@@ -17,8 +17,8 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-    <ion-item-sliding *ngFor="let item of items, let i = index" #slidingItem>
+<ion-content class="background-image" [fullscreen]="true">
+    <ion-item-sliding class="row-item" *ngFor="let item of items, let i = index" #slidingItem>
         <ion-item-options side="start">
             <ion-item-option color="danger" (click)="presentAlert(item.id)">
                 <ion-icon name="trash" slot="icon-only"></ion-icon>
@@ -27,7 +27,7 @@
         <ion-item [hidden]="this.isSelected[i]" (click) = itemSelected(i)>
             <ion-row class="ion-margin">
                 <ion-thumbnail class="image-row">
-                    <ion-img [src]="item.photo"></ion-img>
+                    <ion-img [src]="item.photo[0]"></ion-img>
                 </ion-thumbnail>
                 <ion-col class="description-horizontal wrap-text">
                     <ion-row>
@@ -54,7 +54,7 @@
                     <h2><b>✓</b></h2>
                 </ion-col>
                 <ion-thumbnail class="image-row">
-                    <ion-img [src]="item.photo"></ion-img>
+                    <ion-img [src]="item.photo[0]"></ion-img>
                 </ion-thumbnail>
                 <ion-col class="description-horizontal wrap-text">
                     <ion-row>

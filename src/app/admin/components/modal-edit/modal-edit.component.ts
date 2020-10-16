@@ -11,16 +11,20 @@ import {NgForm} from "@angular/forms";
 })
 export class ModalEditComponent implements OnInit {
   @Input() item: Item;
+  photo = "";
 
   constructor(
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private toastController: ToastController,
-    private itemService: ItemsService
   ) {
   }
 
   ngOnInit() {
+    // @ts-ignore
+    this.item.photo.forEach(item => {
+      this.photo = this.photo + item + "\n";
+    })
   }
 
   onCancel() {
@@ -33,6 +37,7 @@ export class ModalEditComponent implements OnInit {
     }
     let type = this.item.type;
     let desc = [];
+    let photo = form.value.image.split('\n');
 
     //Get Description
     if (type === "processor") {
@@ -51,7 +56,7 @@ export class ModalEditComponent implements OnInit {
     this.presentLoading().then(() => {
       this.item.brand = form.value.name;
       this.item.model = form.value.model;
-      this.item.photo = form.value.image;
+      this.item.photo = photo;
       this.item.price = form.value.price;
       this.item.stock = form.value.stock;
       this.item.description = desc;

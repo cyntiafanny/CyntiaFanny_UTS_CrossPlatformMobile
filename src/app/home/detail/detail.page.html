@@ -10,7 +10,11 @@
 <ion-content>
   <ion-grid>
     <ion-item-divider>
-      <ion-img [src]="loadedItem.photo"></ion-img>
+      <ion-slides pager="true">
+        <ion-slide *ngFor="let photo of loadedItem.photo">
+          <ion-img [src]="photo"></ion-img>
+        </ion-slide>
+      </ion-slides>
     </ion-item-divider>
     <ion-item-divider>
       <ion-col class="ion-margin-horizontal">

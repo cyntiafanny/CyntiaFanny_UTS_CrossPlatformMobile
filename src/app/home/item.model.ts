@@ -1,6 +1,6 @@
 export interface Item {
   id: string;
-  photo: string;
+  photo: {};
   brand: string;
   model: string;
   type: string;

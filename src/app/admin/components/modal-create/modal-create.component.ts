@@ -32,6 +32,7 @@ export class ModalCreateComponent implements OnInit {
       return;
     }
     let desc = [];
+    let photo = form.value.image.split('\n');
 
     // Get Description
     if (this.type === "processor") {
@@ -48,12 +49,12 @@ export class ModalCreateComponent implements OnInit {
     }
 
     this.presentLoading().then(() => {
-      this.itemService.items.push({
-        id: 'i' + (this.itemService.items.length + 1),
+      this.itemService.addItem({
+        id: 'i' + (this.itemService.total + 1),
         brand: form.value.name,
         model: form.value.model,
         type: this.type,
-        photo: form.value.image,
+        photo: photo,
         price: form.value.price,
         stock: form.value.stock,
         description: desc
