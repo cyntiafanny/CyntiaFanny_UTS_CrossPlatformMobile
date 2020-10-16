@@ -7,22 +7,52 @@
             Admin
         </ion-title>
         <ion-buttons slot="primary">
-            <ion-button (click)="presentModalCreate()">
+            <ion-button [hidden]="isTrashIconAppear" (click)="presentModalCreate()">
                 <ion-icon name="add" slot="icon-only"></ion-icon>
+            </ion-button>
+            <ion-button [hidden]="!isTrashIconAppear" (click)="presentAlert()">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <ion-item-sliding *ngFor="let item of items" #slidingItem>
+    <ion-item-sliding *ngFor="let item of items, let i = index" #slidingItem>
         <ion-item-options side="start">
             <ion-item-option color="danger" (click)="presentAlert(item.id)">
                 <ion-icon name="trash" slot="icon-only"></ion-icon>
             </ion-item-option>
         </ion-item-options>
-        <ion-item>
+        <ion-item [hidden]="this.isSelected[i]" (click) = itemSelected(i)>
             <ion-row class="ion-margin">
+                <ion-thumbnail class="image-row">
+                    <ion-img [src]="item.photo"></ion-img>
+                </ion-thumbnail>
+                <ion-col class="description-horizontal wrap-text">
+                    <ion-row>
+                        <ion-label><b>
+                            {{item.brand}} {{item.model}}
+                        </b></ion-label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-label>
+                            Rp. {{item.price}}
+                        </ion-label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-label>
+                            Stock: {{item.stock}}
+                        </ion-label>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item [hidden]="!this.isSelected[i]" (click) = itemSelected(i)>
+            <ion-row class="ion-margin">
+                <ion-col class="checkmark" size="2">
+                    <h2><b>✓</b></h2>
+                </ion-col>
                 <ion-thumbnail class="image-row">
                     <ion-img [src]="item.photo"></ion-img>
                 </ion-thumbnail>
