@@ -35,6 +35,7 @@ export class AdminPage implements OnInit {
 
   ionViewWillEnter() {
     this.items = this.itemService.getAllItems();
+    this.isSelected = [];
     for (let a = 0; a < this.items.length; a++) {
       this.isSelected[a] = false;
     }
@@ -57,11 +58,12 @@ export class AdminPage implements OnInit {
   }
 
   deleteMultipleItem() {
-    for (let a = 0; a < this.items.length; a++) {
+    for (let a = 0; a < this.itemService.getAllItems().length; a++) {
       if (this.isSelected[a]) {
         this.deleteItem(this.items[a].id);
       }
     }
+    this.isTrashIconAppear = false;
   }
 
   deleteItem(id) {
