@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../../home/item.model";
 import {LoadingController, ModalController, ToastController} from "@ionic/angular";
-import {ItemsService} from "../../../home/items.service";
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -22,9 +21,12 @@ export class ModalEditComponent implements OnInit {
 
   ngOnInit() {
     // @ts-ignore
-    this.item.photo.forEach(item => {
-      this.photo = this.photo + item + "\n";
-    })
+    for (let a = 0; a < this.item.photo.length; a++) {
+      if (a != 0) {
+        this.photo += "\n";
+      }
+      this.photo += this.item.photo[a];
+    }
   }
 
   onCancel() {
