@@ -1,0 +1,16 @@
+.image-row {
+  width: 70px;
+  height: 70px;
+}
+
+.description-horizontal {
+  height: min-content;
+  margin: auto 20px;
+}
+
+.wrap-text {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

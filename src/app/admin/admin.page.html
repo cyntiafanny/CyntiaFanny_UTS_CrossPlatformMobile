@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button menu="mainMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Admin
+        </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="presentModalCreate()">
+                <ion-icon name="add" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-item-sliding *ngFor="let item of items" #slidingItem>
+        <ion-item-options side="start">
+            <ion-item-option color="danger" (click)="presentAlert(item.id)">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+        <ion-item>
+            <ion-row class="ion-margin">
+                <ion-thumbnail class="image-row">
+                    <ion-img [src]="item.photo"></ion-img>
+                </ion-thumbnail>
+                <ion-col class="description-horizontal wrap-text">
+                    <ion-row>
+                        <ion-label><b>
+                            {{item.brand}} {{item.model}}
+                        </b></ion-label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-label>
+                            Rp. {{item.price}}
+                        </ion-label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-label>
+                            Stock: {{item.stock}}
+                        </ion-label>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item-options>
+            <ion-item-option color="primary" (click)="presentModalEdit(item)">
+                <ion-icon name="create" slot="icon-only"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-content>
