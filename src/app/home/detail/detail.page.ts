@@ -20,6 +20,7 @@ export class DetailPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("init")
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('itemId')){ return; }
       const itemId = paramMap.get('itemId');
@@ -29,5 +30,4 @@ export class DetailPage implements OnInit {
       this.descriptionUnitName = this.itemsService.getDescriptionUnitName(this.loadedItem.type);
     });
   }
-
 }
