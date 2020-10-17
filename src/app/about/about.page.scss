@@ -8,6 +8,7 @@ ion-img {
 p {
   margin: 30px 20px;
   text-align: justify;
+  color: black !important;
 }
 
 .background-image {
@@ -17,3 +18,9 @@ p {
 .overlay {
   background-color: rgba(255, 255, 255, 0.8);
 }
+
+h3, h5 {
+  color: black !important;
+}
+
+
