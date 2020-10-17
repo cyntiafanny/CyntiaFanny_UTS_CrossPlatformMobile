@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Item} from "../item.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ItemsService} from "../items.service";
@@ -13,16 +13,18 @@ export class DetailPage implements OnInit {
   descriptionKey: {};
   descriptionValue: {};
   descriptionUnitName: {};
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private itemsService: ItemsService,
-    private router: Router,
-  ) { }
+    private itemsService: ItemsService
+  ) {
+  }
 
   ngOnInit() {
-    console.log("init")
     this.activatedRoute.paramMap.subscribe(paramMap => {
-      if (!paramMap.has('itemId')){ return; }
+      if (!paramMap.has('itemId')) {
+        return;
+      }
       const itemId = paramMap.get('itemId');
       this.loadedItem = this.itemsService.getItem(itemId);
       this.descriptionKey = this.itemsService.getDescriptionKey(this.loadedItem.type);

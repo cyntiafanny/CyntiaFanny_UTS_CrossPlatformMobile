@@ -12,7 +12,7 @@
     <ion-item-divider>
       <ion-slides pager="true">
         <ion-slide *ngFor="let photo of loadedItem.photo">
-          <ion-img [src]="photo"></ion-img>
+          <img [src]="photo" alt="product-photo"/>
         </ion-slide>
       </ion-slides>
     </ion-item-divider>
